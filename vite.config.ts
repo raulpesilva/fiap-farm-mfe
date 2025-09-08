@@ -5,7 +5,13 @@ import { dependencies } from './package.json';
 
 export default defineConfig(() => {
   return {
-    server: { fs: { allow: ['.', '../shared'] } },
+    server: {
+      fs: { allow: ['.', '../shared'] },
+      cors: {
+        origin: '*',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+      },
+    },
     build: { target: 'chrome89' },
     plugins: [
       federation({
