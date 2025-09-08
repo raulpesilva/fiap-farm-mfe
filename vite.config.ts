@@ -11,7 +11,7 @@ export default defineConfig(() => {
       federation({
         filename: 'remoteEntry.js',
         name: 'remote',
-        exposes: { './remote-app': './src/App.tsx' },
+        exposes: { './fiap-farm-mfe': './export/index.tsx' },
         remotes: {},
         shared: {
           react: {
