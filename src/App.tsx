@@ -14,7 +14,7 @@ function App() {
       <a href="https://react.dev" target="_blank">
         <img src={reactLogo} className="logo react" alt="React logo" />
       </a>
-      <h1>Remote App redeploy</h1>
+      <h1>Remote App</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
       </div>
