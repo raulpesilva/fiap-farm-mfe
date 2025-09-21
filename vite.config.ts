@@ -2,15 +2,17 @@ import { federation } from '@module-federation/vite';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import { dependencies } from './package.json';
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd());
+
   return {
     build: { target: 'chrome89' },
-    base: 'https://fiap-farm-mfe.raulpesilva.com',
+    base: env.VITE_BASE_URL,
     server: {
-      origin: 'https://fiap-farm-mfe.raulpesilva.com',
+      origin: env.VITE_BASE_URL,
     },
     plugins: [
       federation({
@@ -28,7 +30,6 @@ export default defineConfig(() => {
             singleton: true,
           },
         },
-
       }),
       react(),
       tailwindcss(),
