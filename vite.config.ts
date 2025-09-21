@@ -1,11 +1,17 @@
 import { federation } from '@module-federation/vite';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 import { defineConfig } from 'vite';
 import { dependencies } from './package.json';
 
 export default defineConfig(() => {
   return {
     build: { target: 'chrome89' },
+    base: 'http://localhost:4174/',
+    server: {
+      origin: 'http://localhost:4174',
+    },
     plugins: [
       federation({
         filename: 'remoteEntry.js',
@@ -22,8 +28,15 @@ export default defineConfig(() => {
             singleton: true,
           },
         },
+
       }),
       react(),
+      tailwindcss(),
     ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
   };
 });
