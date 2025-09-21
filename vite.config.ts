@@ -8,9 +8,9 @@ import { dependencies } from './package.json';
 export default defineConfig(() => {
   return {
     build: { target: 'chrome89' },
-    base: 'http://localhost:4174/',
+    base: 'https://fiap-farm-mfe.raulpesilva.com',
     server: {
-      origin: 'http://localhost:4174',
+      origin: 'https://fiap-farm-mfe.raulpesilva.com',
     },
     plugins: [
       federation({
