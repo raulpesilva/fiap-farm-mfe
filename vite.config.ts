@@ -29,6 +29,10 @@ export default defineConfig(({ mode }) => {
             requiredVersion: dependencies['@raulpesilva/re-state'],
             singleton: true,
           },
+          tailwindcss: {
+            requiredVersion: dependencies.tailwindcss,
+            singleton: true,
+          },
         },
       }),
       react(),
