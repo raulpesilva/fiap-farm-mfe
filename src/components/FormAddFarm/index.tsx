@@ -1,4 +1,4 @@
-import { dispatchHasFarm } from '@/states';
+import { dispatchFarm } from '@/states';
 import { LoaderCircle } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../ui/button';
@@ -6,15 +6,22 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 
 const useFormAddFarm = () => {
-  const [farm, setFarm] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleCreateFarm = async () => {
     try {
       setLoading(true);
-      if (!farm) return setError('Preencha o campo com o nome da fazenda');
-      dispatchHasFarm(true);
+      if (!name) return setError('Preencha o campo com o nome da fazenda');
+      const farm = {
+        id: 1,
+        user_id: 1,
+        name,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      };
+      dispatchFarm(farm);
       window.dispatchEvent(new CustomEvent('goStocks'));
     } catch (error: any) {
       setError('Farm in failed: ' + error.message);
@@ -28,11 +35,11 @@ const useFormAddFarm = () => {
     setError('');
   };
 
-  return { farm, error, loading, setFarm, handleCreateFarm, onChange };
+  return { name, error, loading, setName, handleCreateFarm, onChange };
 };
 
 export const FormAddFarm = () => {
-  const { farm, error, loading, setFarm, handleCreateFarm, onChange } = useFormAddFarm();
+  const { name, error, loading, setName, handleCreateFarm, onChange } = useFormAddFarm();
 
   return (
     <form className='w-full max-w-sm flex flex-col gap-6 px-6'>
@@ -42,8 +49,8 @@ export const FormAddFarm = () => {
           id='farm'
           type='farm'
           placeholder='Digite o nome da sua fazenda'
-          onChange={(e) => onChange(setFarm, e.target.value)}
-          value={farm}
+          onChange={(e) => onChange(setName, e.target.value)}
+          value={name}
         />
       </div>
 
