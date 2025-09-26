@@ -4,7 +4,7 @@ import BannerIcon from '../../assets/icons/banner-un-draw.svg';
 export const AddFarm = () => {
   return (
     <section className='w-full h-full flex flex-col items-center justify-center gap-12 px-4'>
-      <img src={BannerIcon} alt='Banner' className='w-3/4 max-w-[448px]' />
+      <img src={BannerIcon} alt='Banner' className='w-3/4 max-w-[448px] aspect-[448/331]' />
 
       <div className='flex flex-col gap-2'>
         <h1 className='text-xl md:text-2xl font-medium text-primary-foreground text-center'>
