@@ -1,6 +1,6 @@
-import { createReStateMethods } from '@raulpesilva/re-state';
+import { createReStateDispatch } from '@raulpesilva/re-state';
 
-const FARM_KEY = 'farm';
+export const FARM_KEY = 'farm';
 
 interface Farm {
   user_id: number;
@@ -10,7 +10,4 @@ interface Farm {
   updated_at: string;
 }
 
-const initialValue = null as Farm | null;
-
-const methods = createReStateMethods(FARM_KEY, initialValue);
-export const { dispatchFarm, useFarmSelect, getFarm, resetFarm } = methods;
+export const dispatchFarm = createReStateDispatch<Farm | null>(FARM_KEY);
