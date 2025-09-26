@@ -1,3 +1,4 @@
+import { createFarm } from '@/services';
 import { dispatchFarm } from '@/states';
 import { LoaderCircle } from 'lucide-react';
 import { useState } from 'react';
@@ -14,19 +15,13 @@ const useFormAddFarm = () => {
     try {
       setLoading(true);
       if (!name) return setError('Preencha o campo com o nome da fazenda');
-      const farm = {
-        id: 1,
-        user_id: 1,
-        name,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-      };
+      const farm = await createFarm({ name });
       dispatchFarm(farm);
       window.dispatchEvent(new CustomEvent('goStocks'));
     } catch (error: any) {
+      console.log('Error creating farm:', error);
       setError('Farm in failed: ' + error.message);
       setLoading(false);
-      console.log('Error creating farm:', error);
     }
   };
 
