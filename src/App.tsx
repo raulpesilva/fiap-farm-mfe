@@ -4,9 +4,9 @@ import { AddFarm } from './pages';
 
 function App() {
   return (
-    <BrowserRouter basename='/cadastro-fazenda'>
+    <BrowserRouter basename='/'>
       <Routes>
-        <Route path='/' element={<AddFarm />} />
+        <Route path='*' element={<AddFarm />} />
       </Routes>
     </BrowserRouter>
   );
