@@ -2,6 +2,7 @@ import { createFarm } from '@/services';
 import { dispatchFarm } from '@/states';
 import { LoaderCircle } from 'lucide-react';
 import { useState } from 'react';
+import { useMatch } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -10,6 +11,7 @@ const useFormAddFarm = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const isCreateFarm = useMatch('/cadastro-fazenda');
 
   const handleCreateFarm = async () => {
     try {
@@ -17,7 +19,7 @@ const useFormAddFarm = () => {
       if (!name) return setError('Preencha o campo com o nome da fazenda');
       const farm = await createFarm({ name });
       dispatchFarm(farm);
-      window.dispatchEvent(new CustomEvent('goStocks'));
+      if (isCreateFarm) window.dispatchEvent(new CustomEvent('goStocks'));
     } catch (error: any) {
       console.log('Error creating farm:', error);
       setError('Farm in failed: ' + error.message);
