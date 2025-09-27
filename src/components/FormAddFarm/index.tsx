@@ -22,7 +22,7 @@ const useFormAddFarm = () => {
       if (isCreateFarm) window.dispatchEvent(new CustomEvent('goStocks'));
     } catch (error: any) {
       console.log('Error creating farm:', error);
-      setError('Farm in failed: ' + error.message);
+      setError('Farm in failed: ' + error?.message);
       setLoading(false);
     }
   };
