@@ -15,8 +15,8 @@ const useFormAddFarm = () => {
 
   const handleCreateFarm = async () => {
     try {
-      setLoading(true);
       if (!name) return setError('Preencha o campo com o nome da fazenda');
+      setLoading(true);
       const farm = await createFarm({ name });
       dispatchFarm(farm);
       if (isCreateFarm) window.dispatchEvent(new CustomEvent('goStocks'));
