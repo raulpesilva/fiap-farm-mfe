@@ -40,7 +40,7 @@ export const FormAddFarm = () => {
 
   return (
     <form className='w-full max-w-sm flex flex-col gap-6 px-6'>
-      <div className='grid gap-3'>
+      <div className='grid gap-2'>
         <Label htmlFor='farm'>Nome da fazenda</Label>
         <Input
           id='farm'
