@@ -40,14 +40,17 @@ export const FormAddFarm = () => {
 
   return (
     <form className='w-full max-w-sm flex flex-col gap-6 px-6'>
-      <div className='grid gap-2'>
-        <Label htmlFor='farm'>Nome da fazenda</Label>
+      <div className='grid group'>
+        <Label className='pb-2' htmlFor='farm'>
+          Nome da fazenda
+        </Label>
         <Input
           id='farm'
           type='farm'
           placeholder='Digite o nome da sua fazenda'
           onChange={(e) => onChange(setName, e.target.value)}
           value={name}
+          className='group-hover:bg-input/50! transition-colors duration-300'
         />
       </div>
 
